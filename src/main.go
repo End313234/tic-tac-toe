@@ -111,9 +111,8 @@ func GenerateBoard(board [][]string) string {
 	return stringifiedBoard
 }
 
-func AskForWhereToPutTheSymbol(match Match, player int) string {
-	var answer string
-	var choices []string
+func GenerateChoices(match Match) []string {
+	choices := []string{}
 
 	for rowIndex, row := range match.Board {
 		for valueIndex, value := range row {
@@ -122,6 +121,14 @@ func AskForWhereToPutTheSymbol(match Match, player int) string {
 			}
 		}
 	}
+
+	return choices
+}
+
+func AskForWhereToPutTheSymbol(match Match, player int) string {
+	var answer string
+
+	choices := GenerateChoices(match)
 
 	message := fmt.Sprintf("%s, where do you want to put your symbol? Possible places: %s\n>> ", match.Players[player].Name, strings.Join(choices, ", "))
 	for answer == "" {
