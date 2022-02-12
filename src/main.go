@@ -229,5 +229,5 @@ func main() {
 			playerIndex--
 		}
 	}
-	fmt.Printf("Player \"%s\" won the game! Thanks for playing!", match.Winner)
+	fmt.Printf("Player \"%s\" won the game! Thanks for playing! This game took %s.", match.Winner, time.Since(match.CreatedAt))
 }
